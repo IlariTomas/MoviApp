@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movi - Tu viaje, mucho más que un destino</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span>9:41</span>
+            <div class="status-icons">
+                <span class="signal">📶</span>
+                <span class="battery">🔋</span>
+            </div>
+        </div>
+
+        <!-- App Header -->
+        <div class="app-header">
+            <img src="/movi-logo-clean.png" alt="Movi Logo" class="logo">
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Home Screen -->
+            <div id="home-screen" class="screen active">
+                <div class="welcome-section">
+                    <div class="welcome-text">
+                        <h1>¡Hola!</h1>
+                        <p>¿A dónde vamos hoy?</p>
+                    </div>
+                    <div class="notification-icon">
+                        <span class="bell">🔔</span>
+                        <div class="notification-dot"></div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="action-btn primary" onclick="showScreen('create')">
+                        <span class="icon">➕</span>
+                        <span>Crear Viaje</span>
+                    </button>
+                    <button class="action-btn secondary" onclick="showScreen('search')">
+                        <span class="icon">🔍</span>
+                        <span>Buscar Viaje</span>
+                    </button>
+                </div>
+
+                <div class="section">
+                    <h2>Eventos Destacados</h2>
+                    <div class="events-list">
+                        <div class="event-card">
+                            <div class="event-image">
+                                <img src="/rock-festival.png" alt="Cosquín Rock">
+                            </div>
+                            <div class="event-info">
+                                <h3>Cosquín Rock 2024</h3>
+                                <p>15 Mar • Córdoba</p>
+                                <span class="badge">Rock</span>
+                            </div>
+                            <span class="status available">disponible</span>
+                        </div>
+                        <div class="event-card">
+                            <div class="event-image">
+                                <img src="/electronic-festival.png" alt="Electronic Festival">
+                            </div>
+                            <div class="event-info">
+                                <h3>Electronic Festival</h3>
+                                <p>22 Abr • Buenos Aires</p>
+                                <span class="badge">Electronic</span>
+                            </div>
+                            <span class="status upcoming">próximamente</span>
+                        </div>
+                        <div class="event-card">
+                            <div class="event-image">
+                                <img src="/indie-festival.png" alt="Indie Showcase">
+                            </div>
+                            <div class="event-info">
+                                <h3>Indie Showcase</h3>
+                                <p>5 May • Rosario</p>
+                                <span class="badge">Indie</span>
+                            </div>
+                            <span class="status available">disponible</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Viajes Disponibles</h2>
+                    <div class="trips-list">
+                        <div class="trip-card">
+                            <div class="trip-header">
+                                <div class="trip-info">
+                                    <h3>Cosquín Rock 2024</h3>
+                                    <p>por María José</p>
+                                </div>
+                                <div class="trip-price">
+                                    <span class="price">$2,500</span>
+                                    <span class="per-person">por persona</span>
+                                </div>
+                            </div>
+                            <div class="trip-details">
+                                <span>Buenos Aires → Córdoba</span>
+                                <span>2/4 asientos</span>
+                            </div>
+                            <div class="trip-footer">
+                                <span>15 Mar - 14:00</span>
+                                <span>⭐ 4.9</span>
+                            </div>
+                        </div>
+                        <div class="trip-card">
+                            <div class="trip-header">
+                                <div class="trip-info">
+                                    <h3>Electronic Festival</h3>
+                                    <p>por Lucas</p>
+                                </div>
+                                <div class="trip-price">
+                                    <span class="price">$1,200</span>
+                                    <span class="per-person">por persona</span>
+                                </div>
+                            </div>
+                            <div class="trip-details">
+                                <span>La Plata → Buenos Aires</span>
+                                <span>1/3 asientos</span>
+                            </div>
+                            <div class="trip-footer">
+                                <span>22 Abr - 16:30</span>
+                                <span>⭐ 4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Trip Screen -->
+            <div id="create-screen" class="screen">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="showScreen('home')">←</button>
+                    <h1>Crear Viaje</h1>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>Fecha</label>
+                                <div class="input-with-icon">
+                                    <input type="date" id="trip-date">
+                                    <span class="input-icon">📅</span>
+                                </div>
+                            </div>
+                            <div class="form-field">
+                                <label>Hora</label>
+                                <div class="input-with-icon">
+                                    <input type="time" id="trip-time">
+                                    <span class="input-icon">🕐</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Lugar de encuentro</label>
+                        <div class="input-with-icon">
+                            <input type="text" id="meeting-place" placeholder="Ej: Plaza San Martín, Buenos Aires...">
+                            <span class="input-icon">📍</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Evento</label>
+                        <div class="event-selector">
+                            <div class="event-option" onclick="selectEvent(1)">
+                                <div class="event-option-image">
+                                    <img src="/rock-festival.png" alt="Cosquín Rock">
+                                </div>
+                                <div class="event-option-info">
+                                    <h3>Cosquín Rock 2024</h3>
+                                    <p>15 Mar • Córdoba</p>
+                                </div>
+                                <span class="music-icon">🎵</span>
+                            </div>
+                            <div class="event-option" onclick="selectEvent(2)">
+                                <div class="event-option-image">
+                                    <img src="/electronic-festival.png" alt="Electronic Festival">
+                                </div>
+                                <div class="event-option-info">
+                                    <h3>Electronic Festival</h3>
+                                    <p>22 Abr • Buenos Aires</p>
+                                </div>
+                                <span class="music-icon">🎵</span>
+                            </div>
+                            <div class="event-option" onclick="selectEvent(3)">
+                                <div class="event-option-image">
+                                    <img src="/indie-festival.png" alt="Indie Showcase">
+                                </div>
+                                <div class="event-option-info">
+                                    <h3>Indie Showcase</h3>
+                                    <p>5 May • Rosario</p>
+                                </div>
+                                <span class="music-icon">🎵</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>Pasajeros</label>
+                                <div class="input-with-icon">
+                                    <input type="number" id="passengers" min="1" max="4" value="3">
+                                    <span class="input-icon">👥</span>
+                                </div>
+                            </div>
+                            <div class="form-field">
+                                <label>Precio por persona</label>
+                                <div class="input-with-icon">
+                                    <input type="number" id="price" placeholder="2500">
+                                    <span class="input-icon">💰</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <textarea id="description" placeholder="Ej: Viaje al Cosquín Rock! Salimos temprano, buena música en el auto..." maxlength="200" oninput="updateCharCount()"></textarea>
+                        <div class="char-count">
+                            <span id="char-remaining">200</span> caracteres restantes
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn primary full-width" onclick="createTrip()">
+                            <span class="icon">🚗</span>
+                            Crear Viaje
+                        </button>
+                        <button class="btn secondary full-width" onclick="showScreen('home')">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Screen -->
+            <div id="search-screen" class="screen">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="showScreen('home')">←</button>
+                    <h1>Buscar Viajes</h1>
+                </div>
+
+                <div class="search-container">
+                    <div class="search-filters">
+                        <div class="input-with-icon">
+                            <input type="text" placeholder="¿A qué evento querés ir?">
+                            <span class="input-icon">🔍</span>
+                        </div>
+                        <div class="filter-row">
+                            <input type="date" placeholder="Fecha">
+                            <input type="text" placeholder="Desde">
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2>Viajes Disponibles</h2>
+                        <div class="search-results">
+                            <div class="search-trip-card">
+                                <div class="trip-header">
+                                    <div class="trip-info">
+                                        <h3>Cosquín Rock 2024</h3>
+                                        <div class="driver-info">
+                                            <div class="driver-avatar">MJ</div>
+                                            <span>María José</span>
+                                            <span>⭐ 4.9</span>
+                                        </div>
+                                    </div>
+                                    <div class="trip-price">
+                                        <span class="price">$2,500</span>
+                                        <span class="per-person">por persona</span>
+                                    </div>
+                                </div>
+                                <div class="trip-details">
+                                    <div class="detail-row">
+                                        <span>📍 Buenos Aires → Córdoba</span>
+                                        <span>🕐 15 Mar - 14:00</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span>👥 2/4 disponibles</span>
+                                        <span class="verified-badge">Verificado</span>
+                                    </div>
+                                </div>
+                                <button class="btn primary full-width" onclick="requestTrip()">
+                                    Solicitar Viaje
+                                </button>
+                            </div>
+                            <div class="search-trip-card">
+                                <div class="trip-header">
+                                    <div class="trip-info">
+                                        <h3>Electronic Festival</h3>
+                                        <div class="driver-info">
+                                            <div class="driver-avatar">LC</div>
+                                            <span>Lucas</span>
+                                            <span>⭐ 4.8</span>
+                                        </div>
+                                    </div>
+                                    <div class="trip-price">
+                                        <span class="price">$1,200</span>
+                                        <span class="per-person">por persona</span>
+                                    </div>
+                                </div>
+                                <div class="trip-details">
+                                    <div class="detail-row">
+                                        <span>📍 La Plata → Buenos Aires</span>
+                                        <span>🕐 22 Abr - 16:30</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span>👥 1/3 disponibles</span>
+                                        <span class="verified-badge">Verificado</span>
+                                    </div>
+                                </div>
+                                <button class="btn primary full-width" onclick="requestTrip()">
+                                    Solicitar Viaje
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Screen -->
+            <div id="chat-screen" class="screen">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="showScreen('home')">←</button>
+                    <h1>Mensajes</h1>
+                    <button class="header-btn" onclick="showNotifications()">🔔</button>
+                </div>
+
+                <div class="chat-container">
+                    <div class="chat-list">
+                        <div class="chat-item" onclick="openChat('maria')">
+                            <div class="chat-avatar">MJ</div>
+                            <div class="chat-info">
+                                <div class="chat-header">
+                                    <h3>María José</h3>
+                                    <span class="chat-time">14:30</span>
+                                </div>
+                                <p class="chat-preview">¡Perfecto! Nos vemos mañana a las 14:00 en Plaza San Martín</p>
+                                <div class="chat-badges">
+                                    <span class="trip-badge">Cosquín Rock</span>
+                                    <span class="unread-badge">2</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-item" onclick="openChat('lucas')">
+                            <div class="chat-avatar">LC</div>
+                            <div class="chat-info">
+                                <div class="chat-header">
+                                    <h3>Lucas</h3>
+                                    <span class="chat-time">12:15</span>
+                                </div>
+                                <p class="chat-preview">¿Llevamos algo para el viaje?</p>
+                                <div class="chat-badges">
+                                    <span class="trip-badge">Electronic Festival</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-item" onclick="openChat('valentina')">
+                            <div class="chat-avatar">VS</div>
+                            <div class="chat-info">
+                                <div class="chat-header">
+                                    <h3>Valentina</h3>
+                                    <span class="chat-time">Ayer</span>
+                                </div>
+                                <p class="chat-preview">Gracias por el viaje! Todo perfecto 🎵</p>
+                                <div class="chat-badges">
+                                    <span class="trip-badge completed">Completado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Individual Chat Screen -->
+            <div id="individual-chat-screen" class="screen">
+                <div class="chat-header-bar">
+                    <button class="back-btn" onclick="showScreen('chat')">←</button>
+                    <div class="chat-user-info">
+                        <div class="chat-avatar small" id="current-chat-avatar">MJ</div>
+                        <div>
+                            <h3 id="current-chat-name">María José</h3>
+                            <p class="online-status">En línea</p>
+                        </div>
+                    </div>
+                    <button class="header-btn" onclick="showTripDetails()">ℹ️</button>
+                </div>
+
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message received">
+                        <div class="message-content">
+                            <p>¡Hola! Vi que te interesa ir al Cosquín Rock</p>
+                            <span class="message-time">14:20</span>
+                        </div>
+                    </div>
+                    <div class="message sent">
+                        <div class="message-content">
+                            <p>¡Sí! ¿Cuándo salimos?</p>
+                            <span class="message-time">14:22</span>
+                        </div>
+                    </div>
+                    <div class="message received">
+                        <div class="message-content">
+                            <p>Mañana a las 14:00 desde Plaza San Martín. ¿Te parece bien?</p>
+                            <span class="message-time">14:25</span>
+                        </div>
+                    </div>
+                    <div class="message sent">
+                        <div class="message-content">
+                            <p>¡Perfecto! Ahí estaré 🎸</p>
+                            <span class="message-time">14:30</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="chat-input-bar">
+                        <input type="text" id="message-input" placeholder="Escribe un mensaje...">
+                        <button class="send-btn" onclick="sendMessage()">📤</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Screen -->
+            <div id="profile-screen" class="screen">
+                <div class="screen-header">
+                    <button class="back-btn" onclick="showScreen('home')">←</button>
+                    <h1>Mi Perfil</h1>
+                    <button class="header-btn" onclick="editProfile()">✏️</button>
+                </div>
+
+                <div class="profile-container">
+                    <div class="profile-header">
+                        <div class="profile-avatar-large">
+                            <span id="user-initials">TU</span>
+                        </div>
+                        <h2 id="user-name">Tu Usuario</h2>
+                        <div class="profile-rating">
+                            <span>⭐ 4.9</span>
+                            <span class="rating-count">(47 viajes)</span>
+                        </div>
+                        <div class="profile-badges">
+                            <span class="badge verified">✓ Verificado</span>
+                            <span class="badge experienced">🏆 Conductor Experto</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">47</span>
+                            <span class="stat-label">Viajes</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">23</span>
+                            <span class="stat-label">Como conductor</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24</span>
+                            <span class="stat-label">Como pasajero</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-sections">
+                        <div class="profile-section">
+                            <h3>Información Personal</h3>
+                            <div class="info-item">
+                                <span class="info-label">📧 Email:</span>
+                                <span class="info-value">usuario@email.com</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">📱 Teléfono:</span>
+                                <span class="info-value">+54 11 1234-5678</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">📍 Ciudad:</span>
+                                <span class="info-value">Buenos Aires</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-section">
+                            <h3>Preferencias Musicales</h3>
+                            <div class="music-preferences">
+                                <span class="music-tag">🎸 Rock</span>
+                                <span class="music-tag">🎵 Pop</span>
+                                <span class="music-tag">🎤 Indie</span>
+                                <span class="music-tag">🎧 Electronic</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-section">
+                            <h3>Historial Reciente</h3>
+                            <div class="trip-history">
+                                <div class="history-item">
+                                    <div class="history-icon">🎸</div>
+                                    <div class="history-info">
+                                        <h4>Cosquín Rock 2024</h4>
+                                        <p>Conductor • 15 Mar 2024</p>
+                                    </div>
+                                    <span class="history-rating">⭐ 4.9</span>
+                                </div>
+                                <div class="history-item">
+                                    <div class="history-icon">🎵</div>
+                                    <div class="history-info">
+                                        <h4>Lollapalooza</h4>
+                                        <p>Pasajero • 28 Feb 2024</p>
+                                    </div>
+                                    <span class="history-rating">⭐ 5.0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-actions">
+                            <button class="btn secondary full-width" onclick="showSettings()">
+                                ⚙️ Configuración
+                            </button>
+                            <button class="btn secondary full-width" onclick="showHelp()">
+                                ❓ Ayuda y Soporte
+                            </button>
+                            <button class="btn danger full-width" onclick="logout()">
+                                🚪 Cerrar Sesión
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Overlay -->
+            <div id="notifications-overlay" class="overlay">
+                <div class="notifications-panel">
+                    <div class="notifications-header">
+                        <h3>Notificaciones</h3>
+                        <button class="close-btn" onclick="hideNotifications()">✕</button>
+                    </div>
+                    <div class="notifications-list">
+                        <div class="notification-item unread">
+                            <div class="notification-icon">💬</div>
+                            <div class="notification-content">
+                                <h4>Nuevo mensaje de María José</h4>
+                                <p>¡Perfecto! Nos vemos mañana a las 14:00...</p>
+                                <span class="notification-time">Hace 5 min</span>
+                            </div>
+                        </div>
+                        <div class="notification-item unread">
+                            <div class="notification-icon">🚗</div>
+                            <div class="notification-content">
+                                <h4>Viaje confirmado</h4>
+                                <p>Tu viaje al Cosquín Rock ha sido confirmado</p>
+                                <span class="notification-time">Hace 1 hora</span>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">⭐</div>
+                            <div class="notification-content">
+                                <h4>Nueva calificación recibida</h4>
+                                <p>Valentina te calificó con 5 estrellas</p>
+                                <span class="notification-time">Ayer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <button class="nav-btn active" onclick="showScreen('home')">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Inicio</span>
+            </button>
+            <button class="nav-btn" onclick="showScreen('search')">
+                <span class="nav-icon">🔍</span>
+                <span class="nav-label">Buscar</span>
+            </button>
+            <button class="nav-btn" onclick="showScreen('chat')">
+                <span class="nav-icon">💬</span>
+                <span class="nav-label">Chats</span>
+                <div class="nav-badge">3</div>
+            </button>
+            <button class="nav-btn" onclick="showScreen('profile')">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Perfil</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
